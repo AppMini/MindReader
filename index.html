@@ -13,8 +13,13 @@
     <script type="text/javascript" src="Monocle/dist/scripts/monoctrl.js"></script>
     <script type="text/javascript" src="efm/efm.js"></script>
     <script type="text/javascript" src="zip.js/WebContent/zip.js"></script>
+    <script type="text/javascript" src="scripts.js"></script>
     
     <style type="text/css">
+    body {
+	    	    background: #111;
+      }
+
       #reader {
         top: 0;
         left: 0;
@@ -23,35 +28,107 @@
         position: absolute;
         visibility: hidden;
         overflow: hidden;
+        background-color: #111;
       }
       div.monelem_container {
-        background: #EEE;
+        /* background: #EEE; */
+        background: #111;
       }
       div.monelem_page {
         border: none;
         box-shadow: #999 2px 0px 2px;
         -moz-box-shadow: #999 2px 0px 2px;
         -webkit-box-shadow: #999 2px 0px 2px;
+        background-color: #111;
       }
+
+      div.monelem_sheaf {
+      }
+
+      .chapterTitle {
+      	      color: #FEC;
+	      position: absolute;
+	      left: 0.5em;
+	      bottom: 0.25em;
+	      font-size: 0.75em;
+      }
+
+      .pageNumber {
+      	      color: #FEC;
+	      position: absolute;
+	      bottom: 0.25em;
+	      right: 0.5em;
+              font-size: 0.75em;
+      }
+    </style>
+
+    <style type="text/css" media="ebook-type" id="bookstyle">
+	    body { font-family: Palatino, Georgia, serif; line-height: 1.3; font-size: 11pt; /* color: #310; */ color: #FEC }
+	    h1, h2, h3, h4 { margin-top: 1em; margin-bottom: 2em; }
+	    .cover { text-transform: uppercase; text-align: center; }
+	    .cover h1 { letter-spacing: 0.2em; font-size: 1.7em; margin-bottom: 2em; }
+	    .cover h2 { font-size: 1em; margin-bottom: 3em; }
+	    .cover h2 span { font-size: 0.8em; display: block; font-weight: normal; }
+	    .cover h3 { font-weight: normal; font-size: 2em; }
+	    .cover p { text-transform: none; font-size: 11px; }
     </style>
 
     <script type="text/javascript">
     	    zip.workerScriptsPath = "/zip.js/WebContent/";
 	    (function () {
 
-        function prep(rdr) {
-          document.getElementById('reader').style.visibility = "visible";
+        // Initialize the reader element.
+        function init(bookData) {
+          var bkTitle = bookData.getMetaData('title');
+          window.placeSaver = new Monocle.Controls.PlaceSaver(bkTitle);
+          var options = {
+            place: placeSaver.savedPlace(),
+            stylesheet: document.getElementById("bookstyle").innerText,
+            //panels: Monocle.Browser.on.Kindle3 ?
+            //  Monocle.Panels.eInk :
+            //  Monocle.Panels.Marginal
+          }
+          window.reader = Monocle.Reader('reader', bookData, options, prep);
         }
-	
+
+        function prep(rdr) {
+	  document.getElementById('reader').style.visibility = "visible";
+          rdr.addControl(placeSaver/*, 'invisible'*/);
+          //oldBookSpinner(reader);
+          //oldBookMagnifier(reader);
+          //oldBookTitle(reader);
+          var chT = bookChapterTitle(reader);
+          var pgN = bookPageNumber(reader);
+          bookScrubber(reader, chT, pgN);
+          Monocle.Events.listen(window, 'resize', onResize);
+	}
+
+        //function prep(rdr) {
+	//	document.getElementById('reader').style.visibility = "visible";
+	//}
+
+
+        function onResize() {
+          window.reader.resized();
+	}
+
 	var request = new XMLHttpRequest();
 	request.open("GET", "books/The-Languages-of-Pao-vde11-20130624_dc.epub", true);
 	request.responseType = "blob";
 	request.onload = function () {
 	    new Epub(request.response, function (bookData) {
-		    Monocle.Reader("reader", bookData, {}, prep);
+		    // Monocle.Reader("reader", bookData, {}, prep);
+		    init(bookData);
 	    });
 	};
 	request.send();
+
+	function fetch (path) {
+            var ajReq = new XMLHttpRequest();
+            ajReq.open("GET", path, false);
+            ajReq.send(null);
+            return ajReq.responseText;
+        }
 
         //function init() {
         //  window.reader = Monocle.Reader('reader', null, {}, prep);
