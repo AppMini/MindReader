@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.1//EN' 'http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="icon.png"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta http-equiv="Content-Type" content="text/htmlcharset=utf-8"/>
+
+    <link rel="stylesheet" href="Monocle/styles/monocore.css" />
+    <link rel="stylesheet" href="Monocle/styles/monoctrl.css" />
+
+    <script type="text/javascript" src="Monocle/dist/scripts/monocore.js"></script>
+    <script type="text/javascript" src="Monocle/dist/scripts/monoctrl.js"></script>
+    <script type="text/javascript" src="efm/efm.js"></script>
+    <script type="text/javascript" src="zip.js/WebContent/zip.js"></script>
+    
+    <style type="text/css">
+      #reader {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+        visibility: hidden;
+        overflow: hidden;
+      }
+      div.monelem_container {
+        background: #EEE;
+      }
+      div.monelem_page {
+        border: none;
+        box-shadow: #999 2px 0px 2px;
+        -moz-box-shadow: #999 2px 0px 2px;
+        -webkit-box-shadow: #999 2px 0px 2px;
+      }
+    </style>
+
+    <script type="text/javascript">
+    	    zip.workerScriptsPath = "/zip.js/WebContent/";
+	    (function () {
+
+        function prep(rdr) {
+          document.getElementById('reader').style.visibility = "visible";
+        }
+	
+	var request = new XMLHttpRequest();
+	request.open("GET", "books/The-Languages-of-Pao-vde11-20130624_dc.epub", true);
+	request.responseType = "blob";
+	request.onload = function () {
+	    new Epub(request.response, function (bookData) {
+		    Monocle.Reader("reader", bookData, {}, prep);
+	    });
+	};
+	request.send();
+
+        //function init() {
+        //  window.reader = Monocle.Reader('reader', null, {}, prep);
+        //}
+        //Monocle.Events.listen(window, 'load', init);
+      })();
+    </script>
+
+  </head>
+
+  <body>
+	  <div id="reader"></div>
+  </body>
+</html>

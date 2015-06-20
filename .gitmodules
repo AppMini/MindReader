@@ -1,0 +1,9 @@
+[submodule "Monocle"]
+	path = Monocle
+	url = https://github.com/joseph/Monocle.git
+[submodule "efm"]
+	path = efm
+	url = https://github.com/rschroll/efm.git
+[submodule "zip.js"]
+	path = zip.js
+	url = git://github.com/gildas-lormeau/zip.js
