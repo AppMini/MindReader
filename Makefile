@@ -3,7 +3,7 @@ MONOCLEDEPS=Monocle/Rakefile $(wildcard Monocle/src/**/*.js)
 BOOKS=$(wildcard books/*.epub)
 BOOKDIRS = $(BOOKS:.epub=)
 
-all:$(MONOCLE) $(BOOKDIRS)
+all:$(MONOCLE) booklist.txt $(BOOKDIRS)
 
 $(MONOCLE): $(MONOCLEDEPS)
 	@cd Monocle && rake
@@ -14,10 +14,11 @@ $(SUBMODULES):
 	@git submodule update
 
 $(BOOKDIRS): $(BOOKS)
-	unzip $@.epub -d $@
+	unzip -o $@.epub -d $@
 
-booklist:
-	@ls books > booklist.txt
+booklist.txt: $(BOOKS)
+	@echo "Building book list."
+	@ls books/*.epub > booklist.txt
 
 clean:
 	rm -rf Monocle/dist
