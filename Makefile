@@ -18,7 +18,7 @@ $(BOOKDIRS): $(BOOKS)
 
 booklist.txt: $(BOOKS)
 	@echo "Building book list."
-	@ls books/*.epub > booklist.txt
+	@cd books && ls *.epub > ../booklist.txt
 
 clean:
 	rm -rf Monocle/dist
