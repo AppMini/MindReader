@@ -14,7 +14,7 @@ $(SUBMODULES):
 	@git submodule update
 
 $(BOOKDIRS): $(BOOKS)
-	unzip $< -d $@
+	unzip $@.epub -d $@
 
 booklist:
 	@ls books > booklist.txt
