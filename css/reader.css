@@ -1,0 +1,70 @@
+    body {
+	    	    background: #111;
+      }
+
+      #reader {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+        visibility: hidden;
+        overflow: hidden;
+        background-color: #111;
+      }
+      div.monelem_container {
+        /* background: #EEE; */
+        background: #111;
+      }
+      div.monelem_page {
+        border: none;
+        box-shadow: #999 2px 0px 2px;
+        -moz-box-shadow: #999 2px 0px 2px;
+        -webkit-box-shadow: #999 2px 0px 2px;
+        background-color: #111;
+      }
+
+      div.monelem_sheaf {
+      }
+
+      div.monelem_sheaf * {
+	background-color: #111 !important;
+      }
+
+      html#RS\:monocle * {
+      	      background-color: #111;
+      }
+
+      html#LS\:monocle * {
+      	      background-color: #111;
+      }
+
+      .chapterTitle {
+      	      color: #FEC;
+	      position: absolute;
+	      left: 0.5em;
+	      bottom: 0.25em;
+	      font-size: 0.75em;
+      }
+
+      .pageNumber {
+      	      color: #FEC;
+	      position: absolute;
+	      bottom: 0.25em;
+	      right: 0.5em;
+              font-size: 0.75em;
+      }
+
+      .booklist {
+      	      color: #FEC;
+	      max-width: 600px;
+	      margin-left: auto;
+	      margin-right: auto;
+	      display: block;
+	      line-height: 2em;
+	      list-style-type: none;
+      }
+
+      .booklist a{
+      	      color: #FEC;
+      }
