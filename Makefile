@@ -1,13 +1,11 @@
-MONOCLE=Monocle/dist/scripts/monocore.js Monocle/dist/scripts/monoctrl.js Monocle/dist/scripts/monocore.css Monocle/dist/styles/monoctrl.css
-MONOCLEDEPS=Monocle/Rakefile Monocle/src/**/*.js
+MONOCLE=Monocle/dist/scripts/monocore.js Monocle/dist/scripts/monoctrl.js Monocle/dist/styles/monocore.css Monocle/dist/styles/monoctrl.css
+MONOCLEDEPS=Monocle/Rakefile $(wildcard Monocle/src/**/*.js)
 BOOKS=$(wildcard books/*.epub)
 BOOKDIRS = $(BOOKS:.epub=)
 
-SUBMODULES=$(MONOCLEDEPS)
+all:$(MONOCLE) $(BOOKDIRS)
 
-all:$(SUBMODULES) $(MONOCLE) $(BOOKDIRS)
-
-$(MONOCLE): Monocle/Rakefile Monocle/src/**/*.js
+$(MONOCLE): $(MONOCLEDEPS)
 	@cd Monocle && rake
 
 $(SUBMODULES):
@@ -22,6 +20,6 @@ booklist:
 	@ls books > booklist.txt
 
 clean:
-	rm -rf $(MONOCLE)
+	rm -rf Monocle/dist
 	rm -rf booklist.txt
 
