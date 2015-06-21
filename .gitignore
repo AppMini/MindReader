@@ -1,5 +1,5 @@
 booklist.txt
 .*.swp
 *.log
-books/*.epub
+books/*
 workspace
