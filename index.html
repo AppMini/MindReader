@@ -9,12 +9,6 @@
     <link rel="stylesheet" href="Monocle/styles/monocore.css" />
     <link rel="stylesheet" href="Monocle/styles/monoctrl.css" />
 
-    <script type="text/javascript" src="Monocle/dist/scripts/monocore.js"></script>
-    <script type="text/javascript" src="Monocle/dist/scripts/monoctrl.js"></script>
-    <script type="text/javascript" src="efm/efm.js"></script>
-    <script type="text/javascript" src="zip.js/WebContent/zip.js"></script>
-    <script type="text/javascript" src="scripts.js"></script>
-    
     <style type="text/css">
     body {
 	    	    background: #111;
@@ -45,6 +39,18 @@
       div.monelem_sheaf {
       }
 
+      div.monelem_sheaf * {
+	background-color: #111 !important;
+      }
+
+      html#RS\:monocle * {
+      	      background-color: #111;
+      }
+
+      html#LS\:monocle * {
+      	      background-color: #111;
+      }
+
       .chapterTitle {
       	      color: #FEC;
 	      position: absolute;
@@ -73,69 +79,12 @@
 	    .cover p { text-transform: none; font-size: 11px; }
     </style>
 
-    <script type="text/javascript">
-    	    zip.workerScriptsPath = "/zip.js/WebContent/";
-	    (function () {
-
-        // Initialize the reader element.
-        function init(bookData) {
-          var bkTitle = bookData.getMetaData('title');
-          window.placeSaver = new Monocle.Controls.PlaceSaver(bkTitle);
-          var options = {
-            place: placeSaver.savedPlace(),
-            stylesheet: document.getElementById("bookstyle").innerText,
-            //panels: Monocle.Browser.on.Kindle3 ?
-            //  Monocle.Panels.eInk :
-            //  Monocle.Panels.Marginal
-          }
-          window.reader = Monocle.Reader('reader', bookData, options, prep);
-        }
-
-        function prep(rdr) {
-	  document.getElementById('reader').style.visibility = "visible";
-          rdr.addControl(placeSaver/*, 'invisible'*/);
-          //oldBookSpinner(reader);
-          //oldBookMagnifier(reader);
-          //oldBookTitle(reader);
-          var chT = bookChapterTitle(reader);
-          var pgN = bookPageNumber(reader);
-          bookScrubber(reader, chT, pgN);
-          Monocle.Events.listen(window, 'resize', onResize);
-	}
-
-        //function prep(rdr) {
-	//	document.getElementById('reader').style.visibility = "visible";
-	//}
-
-
-        function onResize() {
-          window.reader.resized();
-	}
-
-	var request = new XMLHttpRequest();
-	request.open("GET", "books/The-Languages-of-Pao-vde11-20130624_dc.epub", true);
-	request.responseType = "blob";
-	request.onload = function () {
-	    new Epub(request.response, function (bookData) {
-		    // Monocle.Reader("reader", bookData, {}, prep);
-		    init(bookData);
-	    });
-	};
-	request.send();
-
-	function fetch (path) {
-            var ajReq = new XMLHttpRequest();
-            ajReq.open("GET", path, false);
-            ajReq.send(null);
-            return ajReq.responseText;
-        }
-
-        //function init() {
-        //  window.reader = Monocle.Reader('reader', null, {}, prep);
-        //}
-        //Monocle.Events.listen(window, 'load', init);
-      })();
-    </script>
+    <script type="text/javascript" src="Monocle/dist/scripts/monocore.js"></script>
+    <script type="text/javascript" src="Monocle/dist/scripts/monoctrl.js"></script>
+    <script type="text/javascript" src="efm/efm.js"></script>
+    <script type="text/javascript" src="zip.js/WebContent/zip.js"></script>
+    <script type="text/javascript" src="js/ui.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
 
   </head>
 
