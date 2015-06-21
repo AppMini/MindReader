@@ -1,5 +1,9 @@
 (function () {
 
+var bookname = "never-go-back.epub";
+// var bookname = "never-go-back.epub";
+var bookname = "capital-in-the-21st-century-Thomas-Piketty.epub";
+
 // Initialize the reader element.
 function init(bookData) {
   console.log("init");
@@ -32,7 +36,7 @@ function init(bookData) {
     window.reader.resized();
   }
 
-  new Epub("books/never-go-back.epub", function(bookData) {
+  new Epub("books/" + bookname, function(bookData) {
     init(bookData);
   });
 

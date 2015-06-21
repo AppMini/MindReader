@@ -263,8 +263,8 @@ function Epub(epubfile, callback) {
                         //var data_url = data_urls[path];
                         //if (data_url != undefined)
                         //    element.setAttribute(attribute, data_url);
-                        console.log(attribute, root + "/" + path);
-                        element.setAttribute(attribute, root + "/" + path);
+                        console.log("set", attribute, "to", document.location.href.split("?")[0] + root + "/" + path);
+                        element.setAttribute(attribute, document.location.href.split("?")[0] + root + "/" + path);
                     }
                 }
                 
