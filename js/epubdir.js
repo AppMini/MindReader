@@ -1,3 +1,9 @@
+// this is a modified version of efm.js to remove the zip.js dependency and work from an already-extracted epub instead.
+// Original source here:
+// https://github.com/rschroll/efm
+
+// Original license remains intact:
+
 /*
  * EFM - Epub for Monocle
  * 
@@ -111,6 +117,7 @@ function Epub(epubfile, callback) {
                 var item = items[i];
                 var id = item.getAttribute("id");
                 var href = item.getAttribute("href");
+                console.log("manifest item href:", href);
                 idmap[id] = joinPaths(reldir, href);
                 var props = item.getAttribute("properties");
                 if (props != null && props.split(" ").indexOf("nav") > -1)
@@ -252,9 +259,12 @@ function Epub(epubfile, callback) {
                     for (var i=0; i<elements.length; i++) {
                         var element = elements[i];
                         var path = joinPaths(reldir, element.getAttribute(attribute));
-                        var data_url = data_urls[path];
-                        if (data_url != undefined)
-                            element.setAttribute(attribute, data_url);
+                        console.log("original path:", path);
+                        //var data_url = data_urls[path];
+                        //if (data_url != undefined)
+                        //    element.setAttribute(attribute, data_url);
+                        console.log(attribute, root + "/" + path);
+                        element.setAttribute(attribute, root + "/" + path);
                     }
                 }
                 
