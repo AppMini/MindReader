@@ -1,8 +1,8 @@
 (function () {
 
-var bookname = "never-go-back.epub";
+//var bookname = "never-go-back.epub";
 // var bookname = "never-go-back.epub";
-var bookname = "capital-in-the-21st-century-Thomas-Piketty.epub";
+//var bookname = "capital-in-the-21st-century-Thomas-Piketty.epub";
 
 // Initialize the reader element.
 function init(bookData) {
@@ -36,9 +36,24 @@ function init(bookData) {
     window.reader.resized();
   }
 
-  new Epub("books/" + bookname, function(bookData) {
-    init(bookData);
-  });
+  var pathparts = document.location.href.split("?");
+  if (pathparts.length == 2) {
+    new Epub("books/" + pathparts[1], function(bookData) {
+      init(bookData);
+    });
+  } else {
+    var list = fetch("/booklist.txt").split("\n");
+    var out = "<ul class='booklist'>";
+    for (var l=0; l<list.length; l++) {
+      if (list[l]) {
+        out += "<li><a href='?" + list[l] + "'>" + list[l] + "</a></li>";
+      }
+    }
+    out += "</ul>";
+    var el = document.getElementById("reader")
+    el.innerHTML = out;
+    el.style.visibility = "visible";
+  }
 
   function fetch (path) {
       var ajReq = new XMLHttpRequest();
