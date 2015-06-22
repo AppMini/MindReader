@@ -1,4 +1,4 @@
-MONOCLE=Monocle/dist/scripts/monocore.js Monocle/dist/scripts/monoctrl.js Monocle/dist/styles/monocore.css Monocle/dist/styles/monoctrl.css
+MONOCLE=lib/scripts/monocore.js lib/scripts/monoctrl.js lib/styles/monocore.css lib/styles/monoctrl.css
 MONOCLEDEPS=Monocle/Rakefile $(wildcard Monocle/src/**/*.js)
 BOOKS=$(wildcard books/*.epub)
 BOOKDIRS = $(BOOKS:.epub=)
@@ -7,6 +7,7 @@ all:$(MONOCLE) booklist.txt $(BOOKDIRS)
 
 $(MONOCLE): $(MONOCLEDEPS)
 	@cd Monocle && rake
+	@cp -av Monocle/dist/* lib/
 
 $(SUBMODULES):
 	@echo "Checking out submodules."
