@@ -66,6 +66,7 @@ function init(bookData) {
     var el = document.getElementById("reader")
     el.innerHTML = out;
     el.style.visibility = "visible";
+    elSpinner.parentNode.removeChild(elSpinner);
   }
 
   function fetch (path) {
