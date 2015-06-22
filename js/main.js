@@ -4,9 +4,12 @@
 // var bookname = "never-go-back.epub";
 //var bookname = "capital-in-the-21st-century-Thomas-Piketty.epub";
 
+var elSpinner = document.getElementById("spinner");
+
 // Initialize the reader element.
 function init(bookData) {
   console.log("init");
+
     var bkTitle = bookData.getMetaData('title');
     window.placeSaver = new Monocle.Controls.PlaceSaver(bkTitle);
     var options = {
@@ -20,7 +23,7 @@ function init(bookData) {
 
   function prep(rdr) {
     console.log("prep");
-    document.getElementById('reader').style.visibility = "visible";
+    // elSpinner.style.position = "absolute";
     rdr.addControl(placeSaver/*, 'invisible'*/);
     //oldBookSpinner(reader);
     //oldBookMagnifier(reader);
@@ -29,7 +32,17 @@ function init(bookData) {
     var pgN = bookPageNumber(reader);
     bookScrubber(reader, chT, pgN);
     Monocle.Events.listen(window, 'resize', onResize);
+    var elReader = document.getElementById('reader');
+    elReader.style.visibility = "visible";
+    //elSpinner.style.zIndex = "0";
+    elSpinner.parentNode.removeChild(elSpinner);
     console.log("prep done");
+    //elReader.parentNode.removeChild(elReader);
+    /*setTimeout(function() {
+      //document.body.appendChild(elReader);
+      //elReader.style.display = "block";
+      elReader.style.visibility = "visible";
+    }, 100);*/
   }
 
   function onResize() {

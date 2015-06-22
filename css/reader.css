@@ -18,9 +18,6 @@
       }
       div.monelem_page {
         border: none;
-        box-shadow: #999 2px 0px 2px;
-        -moz-box-shadow: #999 2px 0px 2px;
-        -webkit-box-shadow: #999 2px 0px 2px;
         background-color: #111;
       }
 
@@ -45,6 +42,7 @@
 	      left: 0.5em;
 	      bottom: 0.25em;
 	      font-size: 0.75em;
+	      font-family: "Arial";
       }
 
       .pageNumber {
@@ -53,6 +51,7 @@
 	      bottom: 0.25em;
 	      right: 0.5em;
               font-size: 0.75em;
+	      font-family: "Arial";
       }
 
       .booklist {
@@ -68,3 +67,26 @@
       .booklist a{
       	      color: #FEC;
       }
+
+.ball-scale > div {
+  background-color: #FEC;
+}
+
+.loader-inner {
+	visibility: visible;
+	display: block;
+	z-index: 1001;
+	margin: 0px;
+	padding: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 2em;
+	text-align: center;
+	bottom: 1em;
+	right: 1em;
+	position: absolute;
+}
+
+/*body {
+	filter: invert(100%);
+}*/

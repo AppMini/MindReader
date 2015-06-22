@@ -1,3 +1,6 @@
 [submodule "Monocle"]
 	path = Monocle
 	url = https://github.com/joseph/Monocle.git
+[submodule "loaders.css"]
+	path = loaders.css
+	url = https://github.com/ConnorAtherton/loaders.css.git

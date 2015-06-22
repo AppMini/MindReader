@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
     <meta http-equiv="Content-Type" content="text/htmlcharset=utf-8"/>
 
-    <link rel="stylesheet" href="Monocle/styles/monocore.css" />
-    <link rel="stylesheet" href="Monocle/styles/monoctrl.css" />
+    <link rel="stylesheet" href="lib/styles/monocore.css" />
+    <link rel="stylesheet" href="lib/styles/monoctrl.css" />
+    <link rel="stylesheet" href="loaders.css/loaders.min.css" />
     <link rel="stylesheet" href="css/reader.css" />
 
     <style type="text/css" media="ebook-type" id="bookstyle">
@@ -21,8 +22,8 @@
 	    .cover p { text-transform: none; font-size: 11px; }
     </style>
 
-    <script type="text/javascript" src="Monocle/dist/scripts/monocore.js"></script>
-    <script type="text/javascript" src="Monocle/dist/scripts/monoctrl.js"></script>
+    <script type="text/javascript" src="lib/scripts/monocore.js"></script>
+    <script type="text/javascript" src="lib/scripts/monoctrl.js"></script>
     <script type="text/javascript" src="js/epubdir.js"></script>
     <script type="text/javascript" src="js/ui.js"></script>
 
@@ -30,6 +31,7 @@
 
   <body>
 	  <div id="reader"></div>
+  	  <div id="spinner" class="loader-inner ball-scale"><div></div></div>
   </body>
   <script type="text/javascript" src="js/main.js"></script>
 </html>
