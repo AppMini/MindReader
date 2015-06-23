@@ -1,3 +1,5 @@
+![Screenshot of the web app](./screenshot.png)
+
  * Place your .epub files in the `books` directory.
  * Run `make` to unpack the epub files.
  * Upload to your web hosting.
