@@ -8,10 +8,12 @@ BOOKDIRS = $(BOOKS:.epub=)
 
 all:booklist.txt $(BOOKDIRS)
 
-$(BOOKDIRS): $(BOOKS)
-	unzip -o $@.epub -d $@
+.SECONDEXPANSION:
+books/%: books/$$(notdir $$*).epub
+	@echo "Unpacking $<"
+	@unzip -q -o $< -d $@
 
-booklist.txt: $(BOOKS)
+booklist.txt: $(BOOKDIRS)
 	@echo "Building book list."
 	@cd books && ls *.epub > ../booklist.txt
 
