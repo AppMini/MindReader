@@ -4,19 +4,9 @@ MONOCLEDEPS=Monocle/Rakefile $(wildcard Monocle/src/**/*.js)
 BOOKS=$(wildcard books/*.epub)
 BOOKDIRS = $(BOOKS:.epub=)
 
-all:$(MONOCLE) $(LOADER) booklist.txt $(BOOKDIRS)
+### Build books ###
 
-$(MONOCLE): $(MONOCLEDEPS) $(SUBMODULES)
-	@cd Monocle && rake
-	@cp -av Monocle/dist/* lib/
-
-$(LOADER): $(SUBMODULES)
-	@cp -av loaders.css/loaders.min.css $(LOADER)
-
-$(SUBMODULES):
-	@echo "Checking out submodules."
-	@git submodule init
-	@git submodule update
+all:booklist.txt $(BOOKDIRS)
 
 $(BOOKDIRS): $(BOOKS)
 	unzip -o $@.epub -d $@
@@ -24,6 +14,22 @@ $(BOOKDIRS): $(BOOKS)
 booklist.txt: $(BOOKS)
 	@echo "Building book list."
 	@cd books && ls *.epub > ../booklist.txt
+
+### Build dependencies for development/updates ###
+
+deps:$(MONOCLE) $(LOADER)
+
+$(MONOCLE): $(MONOCLEDEPS) Monocle
+	@cd Monocle && rake
+	@cp -av Monocle/dist/* lib/
+
+$(LOADER): loaders.css
+	@cp -av loaders.css/loaders.min.css $(LOADER)
+
+Monocle loaders.css:
+	@echo "Checking out submodules."
+	@git submodule init
+	@git submodule update
 
 clean:
 	rm -rf Monocle/dist
