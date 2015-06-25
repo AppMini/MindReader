@@ -29,6 +29,15 @@ div.monelem_sheaf * {
   background-color: #111 !important;
 }
 
+div.monelem_controls_scrubber_container {
+  background: none;
+  top: 0px;
+}
+
+div.monelem_controls_scrubber_bubble {
+  top: 2.5em;
+}
+
 html#RS\:monocle * {
   background-color: #111;
 }
@@ -86,7 +95,7 @@ html#LS\:monocle * {
 .loader-inner {
   visibility: visible;
   display: block;
-  z-index: 1001;
+  z-index: 1002;
   margin: 0px;
   padding: 0px;
   margin-left: auto;
@@ -96,6 +105,18 @@ html#LS\:monocle * {
   bottom: 1em;
   right: 1em;
   position: absolute;
+}
+
+#tapper {
+  position: absolute;
+  background-color: blue;
+  bottom: 0px;
+  right: 0px;
+  width: 64px;
+  height: 64px;
+  display: block;
+  z-index: 1001;
+  opacity: 0.01;
 }
 
 #icon {

@@ -30,11 +30,12 @@
     var chT = bookChapterTitle(reader);
     var pgN = bookPageNumber(reader);
     bookLoadWatcher(reader, pgN, chT);
-    bookScrubber(reader, chT, pgN);
+    var scrub = bookScrubber(reader, chT, pgN);
     Monocle.Events.listen(window, 'resize', onResize);
     var elReader = document.getElementById('reader');
     elReader.style.visibility = "visible";
     elSpinner.parentNode.removeChild(elSpinner);
+    document.getElementById("tapper").onclick = scrub;
     console.log("prep done");
   }
 

@@ -1,3 +1,5 @@
+// this is 99% the same as oldbook.js from Monocle
+
 /* CHAPTER TITLE RUNNING HEAD */
 function bookChapterTitle(reader) {
   var chapterTitle = {
@@ -120,8 +122,12 @@ function bookScrubber(reader, chapterTitle, pageNumber) {
   reader.addControl(scrubber, 'popover', { hidden: true });
   var showFn = function (evt) {
     evt.stopPropagation();
-    reader.showControl(scrubber);
-    scrubber.updateNeedles();
+    if (scrubber.properties.hidden) {
+      reader.showControl(scrubber);
+      scrubber.updateNeedles();
+    } else {
+      reader.hideControl(scrubber);
+    }
   }
   for (var i = 0; i < chapterTitle.runners.length; ++i) {
     Monocle.Events.listenForContact(
@@ -133,5 +139,6 @@ function bookScrubber(reader, chapterTitle, pageNumber) {
       { start: showFn }
     );
   }
+  return showFn;
 }
 
