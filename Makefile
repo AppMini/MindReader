@@ -1,5 +1,8 @@
 # rename any files with spaces - horrible hack because Make sucks at spaces
-SPACEREPLACE:=$(shell find books -depth | rename 's/\ /_/g')
+SPACED=$(shell find . -name "* *")
+SPACEREPLACE=$(shell IFS=""; for book in books/*\ *; do echo "Removing spaces from \"$$book\"."; mv $$book `echo $$book | tr " " "_"`; done)
+$(if $(SPACED),$(info $(SPACEREPLACE)))
+# Actual variables being here
 MONOCLE=lib/scripts/monocore.js lib/scripts/monoctrl.js lib/styles/monocore.css lib/styles/monoctrl.css
 LOADER=lib/loaders.min.css
 MONOCLEDEPS=Monocle/Rakefile $(wildcard Monocle/src/**/*.js)
