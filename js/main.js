@@ -11,10 +11,10 @@
     var options = {
       place: placeSaver.savedPlace(),
       stylesheet: fetch("css/theme-dark.css"),
-      preloadWindow: 100,
+      preloadWindow: 3,
     }
     // load the new pages one after another
-    Monocle.Book.PRELOAD_INTERVAL = 1000;
+    Monocle.Book.PRELOAD_INTERVAL = 200;
     console.log("pre reader");
     window.reader = Monocle.Reader('reader', bookData, options, prep);
     reader.listen('monocle:componentloaded', function(evt) { console.log(evt); });
