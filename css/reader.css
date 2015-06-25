@@ -1,92 +1,89 @@
-    body {
-	    	    background: #111;
-      }
+body {
+  background: #111;
+}
 
-      #reader {
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        position: absolute;
-        visibility: hidden;
-        overflow: hidden;
-        background-color: #111;
-      }
-      div.monelem_container {
-        /* background: #EEE; */
-        background: #111;
-      }
-      div.monelem_page {
-        border: none;
-        background-color: #111;
-      }
+#reader {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  visibility: hidden;
+  overflow: hidden;
+  background-color: #111;
+}
 
-      div.monelem_sheaf {
-      }
+div.monelem_container {
+  background: #111;
+}
 
-      div.monelem_sheaf * {
-	background-color: #111 !important;
-      }
+div.monelem_page {
+  border: none;
+  background-color: #111;
+}
 
-      html#RS\:monocle * {
-      	      background-color: #111;
-      }
+div.monelem_sheaf {
+}
 
-      html#LS\:monocle * {
-      	      background-color: #111;
-      }
+div.monelem_sheaf * {
+  background-color: #111 !important;
+}
 
-      .chapterTitle {
-      	      color: #FEC;
-	      position: absolute;
-	      left: 0.5em;
-	      bottom: 0.25em;
-	      font-size: 0.75em;
-	      font-family: "Arial";
-      }
+html#RS\:monocle * {
+  background-color: #111;
+}
 
-      .pageNumber {
-      	      color: #FEC;
-	      position: absolute;
-	      bottom: 0.25em;
-	      right: 0.5em;
-              font-size: 0.75em;
-	      font-family: "Arial";
-      }
+html#LS\:monocle * {
+  background-color: #111;
+}
 
-      .booklist {
-      	      color: #FEC;
-	      max-width: 600px;
-	      margin-left: auto;
-	      margin-right: auto;
-	      display: block;
-	      line-height: 2em;
-	      list-style-type: none;
-      }
+.chapterTitle {
+  color: #FEC;
+  position: absolute;
+  left: 0.5em;
+  bottom: 0.25em;
+  font-size: 0.75em;
+  font-family: "Arial";
+}
 
-      .booklist a{
-      	      color: #FEC;
-      }
+.pageNumber {
+  color: #FEC;
+  position: absolute;
+  bottom: 0.25em;
+  right: 0.5em;
+  font-size: 0.75em;
+  font-family: "Arial";
+}
+
+.booklist {
+  color: #FEC;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  line-height: 2em;
+  list-style-type: none;
+}
+
+.booklist a{
+  color: #FEC;
+}
 
 .ball-scale > div {
   background-color: #FEC;
 }
 
 .loader-inner {
-	visibility: visible;
-	display: block;
-	z-index: 1001;
-	margin: 0px;
-	padding: 0px;
-	margin-left: auto;
-	margin-right: auto;
-	padding-top: 2em;
-	text-align: center;
-	bottom: 1em;
-	right: 1em;
-	position: absolute;
+  visibility: visible;
+  display: block;
+  z-index: 1001;
+  margin: 0px;
+  padding: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 2em;
+  text-align: center;
+  bottom: 1em;
+  right: 1em;
+  position: absolute;
 }
-
-/*body {
-	filter: invert(100%);
-}*/
