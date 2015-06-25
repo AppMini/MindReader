@@ -6,3 +6,4 @@ h1, h2, h3, h4 { margin-top: 1em; margin-bottom: 2em; }
 .cover h2 span { font-size: 0.8em; display: block; font-weight: normal; }
 .cover h3 { font-weight: normal; font-size: 2em; }
 .cover p { text-transform: none; font-size: 11px; }
+a { color: white; text-decoration: none; }

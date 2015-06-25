@@ -23,6 +23,7 @@ div.monelem_page {
 }
 
 div.monelem_sheaf {
+  top: 0.5em;
 }
 
 div.monelem_sheaf * {
@@ -37,6 +38,16 @@ html#LS\:monocle * {
   background-color: #111;
 }
 
+html#RS\:monocle a {
+  color: white;
+  text-decoration: none;
+}
+
+html#LS\:monocle a {
+  color: white;
+  text-decoration: none;
+}
+
 .chapterTitle {
   color: #FEC;
   position: absolute;
@@ -44,6 +55,16 @@ html#LS\:monocle * {
   bottom: 0.25em;
   font-size: 0.75em;
   font-family: "Arial";
+}
+
+.bookTitle {
+  /*color: #FEC;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.75em;
+  width: 100%;
+  position: absolute;*/
+  display: none;
 }
 
 .pageNumber {

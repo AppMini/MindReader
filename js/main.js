@@ -11,20 +11,25 @@
     var options = {
       place: placeSaver.savedPlace(),
       stylesheet: fetch("css/theme-dark.css"),
+      preloadWindow: 100,
     }
+    // load the new pages one after another
+    Monocle.Book.PRELOAD_INTERVAL = 1000;
     console.log("pre reader");
     window.reader = Monocle.Reader('reader', bookData, options, prep);
+    reader.listen('monocle:componentloaded', function(evt) { console.log(evt); });
     console.log("reader done.");
   }
 
   function prep(rdr) {
     console.log("prep");
     rdr.addControl(placeSaver/*, 'invisible'*/);
-    //oldBookSpinner(reader);
+    bookSpinner(reader);
     //oldBookMagnifier(reader);
-    //oldBookTitle(reader);
+    bookTitle(reader);
     var chT = bookChapterTitle(reader);
     var pgN = bookPageNumber(reader);
+    bookLoadWatcher(reader, pgN, chT);
     bookScrubber(reader, chT, pgN);
     Monocle.Events.listen(window, 'resize', onResize);
     var elReader = document.getElementById('reader');
