@@ -10,7 +10,7 @@
     window.placeSaver = new Monocle.Controls.PlaceSaver(bkTitle);
     var options = {
       place: placeSaver.savedPlace(),
-      stylesheet: document.getElementById("bookstyle").innerText
+      stylesheet: fetch("css/theme-dark.css"),
     }
     console.log("pre reader");
     window.reader = Monocle.Reader('reader', bookData, options, prep);
