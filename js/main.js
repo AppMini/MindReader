@@ -55,7 +55,7 @@ function init(bookData) {
       init(bookData);
     });
   } else {
-    var list = fetch("/booklist.txt").split("\n");
+    var list = fetch("booklist.txt").split("\n");
     var out = "<ul class='booklist'>";
     for (var l=0; l<list.length; l++) {
       if (list[l]) {
