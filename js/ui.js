@@ -18,7 +18,7 @@ function bookChapterTitle(reader) {
       var place = reader.getPlace(page);
       if (place) {
         var props = reader.getBook().properties;
-        this.runners[page.m.pageIndex].innerHTML = (place.chapterTitle() || "") + " (" + (props.componentIds.indexOf(place.componentId()) + 1) + " of " + props.componentIds.length + ")";
+        this.runners[page.m.pageIndex].innerHTML = "<span class='name'>" + (place.chapterTitle() || "") + "</span> (" + (props.componentIds.indexOf(place.componentId()) + 1) + " of " + props.componentIds.length + ")";
       }
     }
   }

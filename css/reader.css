@@ -67,6 +67,17 @@ html#LS\:monocle * {
   font-family: "Arial";
 }
 
+.chapterTitle .name {
+  display: inline-block;
+  margin: 0px;
+  padding: 0px;
+  margin-bottom: -0.25em;
+  max-width: 75%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 .bookTitle {
   /*color: #FEC;
   margin-left: auto;
