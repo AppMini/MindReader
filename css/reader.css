@@ -12,6 +12,18 @@ body {
   background-color: #111;
 }
 
+#reader.booklist {
+  overflow-y: auto;
+}
+
+#reader.booklist li {
+  margin-bottom: 1em;
+}
+
+#reader.booklist li a {
+  text-decoration: none;
+}
+
 div.monelem_container {
   background: #111;
 }

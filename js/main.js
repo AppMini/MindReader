@@ -53,13 +53,14 @@
     var out = "<ul class='booklist'>";
     for (var l=0; l<list.length; l++) {
       if (list[l]) {
-        out += "<li><a href='?" + list[l] + "'>" + list[l] + "</a></li>";
+        out += "<li><a href='?" + list[l] + "'>" + list[l].replace(".epub", "").replace("_", " ") + "</a></li>";
       }
     }
     out += "</ul>";
-    var el = document.getElementById("reader")
-      el.innerHTML = out;
+    var el = document.getElementById("reader");
+    el.innerHTML = out;
     el.style.visibility = "visible";
+    el.className = "booklist"
     elSpinner.parentNode.removeChild(elSpinner);
   }
 
